@@ -3,26 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class DetailPeriksa extends Model
+class Obat extends Model
 {
-    protected $table = 'detail_periksas';
+    use HasFactory;
 
-    // Kolom yang dapat diisi
+    protected $table = 'obats';
+
     protected $fillable = [
-        'id_periksa',
-        'id_obat'
+        'name_obat',
+        'kemasan',
+        'harga'
     ];
 
-    // Relasi dengan Periksa
     public function periksa()
     {
-        return $this->belongsTo(Periksa::class, 'id_periksa');
+        return $this->belongsToMany(Periksa::class, 'detail_periksa', 'obat_id', 'periksa_id');
     }
 
-    // Relasi dengan Obat
-    public function obat()
+    public function detailPeriksa()
     {
-        return $this->belongsTo(Obat::class, 'id_obat');
+        return $this->hasMany(DetailPeriksa::class, 'id_obat');
     }
 }
