@@ -18,20 +18,44 @@ class UserSeeder extends Seeder
     {
         $data = [
         [
-            'name' => 'Isna',
-            'alamat' => 'Jl ini',
+            'name' => 'Romy',
+            'alamat' => 'Jl ini 1',
             'no_hp' => '081234567',
             'role' => 'dokter',
-            'email' => 'isna@gmail.com',
-            'password' => 'password'
+            'email' => 'romy@gmail.com',
+            'password' => '12341234'
         ],
-[
-            'name' => 'Isul',
-            'alamat' => 'Jl itu',
+        [
+            'name' => 'Romy1',
+            'alamat' => 'Jl ini 5',
+            'no_hp' => '08123456745',
+            'role' => 'dokter',
+            'email' => 'romy1@gmail.com',
+            'password' => '12341234'
+        ],
+        [
+            'name' => 'Romy2',
+            'alamat' => 'Jl ini 9',
+            'no_hp' => '0812345987',
+            'role' => 'dokter',
+            'email' => 'romy2@gmail.com',
+            'password' => '12341234'
+        ],
+        [
+            'name' => 'Romz',
+            'alamat' => 'Jl itu 2',
             'no_hp' => '087654321',
             'role' => 'pasien',
-            'email' => 'isul@gmail.com',
-            'password' => 'password'
+            'email' => 'romz@gmail.com',
+            'password' => '12341234'
+        ],
+        [
+            'name' => 'Romz1',
+            'alamat' => 'Jl itu 4',
+            'no_hp' => '08765432123',
+            'role' => 'pasien',
+            'email' => 'romz1@gmail.com',
+            'password' => '12341234'
         ],
         ];
         foreach($data as $d){
@@ -41,7 +65,7 @@ class UserSeeder extends Seeder
                 'no_hp' => $d['no_hp'],
                 'role' => $d['role'],
                 'email' => $d['email'],
-                'password' => $d['password'],
+                'password' => bcrypt($d['password']),
             ]);
         }
     }
