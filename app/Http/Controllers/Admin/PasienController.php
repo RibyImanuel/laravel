@@ -25,9 +25,12 @@ class PasienController extends Controller
             'no_ktp' => 'required|string',
         ]);
 
-        // Generate no_rm otomatis, misal: RM00123
-        $lastId = \App\Models\User::where('role', 'pasien')->max('id') ?? 0;
-        $no_rm = 'RM' . str_pad($lastId + 1, 5, '0', STR_PAD_LEFT);
+        // // Generate no_rm otomatis, misal: RM00123
+        // $lastId = \App\Models\User::where('role', 'pasien')->max('id') ?? 0;
+        // $no_rm = 'RM' . str_pad($lastId + 1, 5, '0', STR_PAD_LEFT);
+
+        $count = \App\Models\User::where('role', 'pasien')->count();
+        $no_rm = 'RM' . str_pad($count + 1, 5, '0', STR_PAD_LEFT);
 
         \App\Models\User::create([
             'name' => $validated['name'],
